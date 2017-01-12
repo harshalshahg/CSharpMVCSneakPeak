@@ -1,0 +1,46 @@
+﻿@model BrandApp.MVC.Models.BrandPageViewModel
+
+@{
+    ViewBag.Title = "ShowBrandDetails";
+    Layout = "~/Views/_MenuHeader.cshtml";
+}
+<div class="container text-left">
+
+    @if (ViewBag.BrandUpdateFailed != null)
+    {
+        <h5 class="alert alert-danger fade in" auto-data-dissmiss="3"> @ViewBag.BrandUpdateFailed</h5>
+    }
+
+    <h2>ShowBrandDetails</h2>
+    <div class="row">
+        <div class="col-lg-4">
+            @Html.Label(Model.BrandName)
+            <img src="@Url.Content(Model.BrandImgUrl)" alt="Image" width="200px" height="200px" />
+        </div>
+        <div class="col-lg-8">
+            @foreach (var item in Model.PromotionList)
+            {
+                <a href='@Url.Action("ShowPromotionDetails", "Promotion", new { promotionId = @item.PromotionId})'>
+                    @item.PromotionName
+                </a>
+                <br />
+            }
+
+        </div>
+    </div>
+    <br />
+    @if (Request.IsAuthenticated)
+    {
+        <div class="row">
+            @if (Model.isPreferredBrand)
+            {
+                @Html.ActionLink("Remove from Prefrence", "RemoveBrand", new { BrandId = Model.BrandId })
+            }
+            else
+            {
+                @Html.ActionLink("Add to Prefrence", "AddBrand", new { BrandId = @Model.BrandId })
+            }
+        </div>
+    }
+
+</div>

@@ -1,0 +1,57 @@
+﻿@model List<BrandApp.MVC.Models.HomePageViewModel>
+
+@{
+    Layout = "~/Views/_MenuHeader.cshtml";
+    ViewBag.Title = "HomePage";
+}
+
+<script>
+    $(document).ready(function () {
+        $("#SuccessMessage").fadeTo(2000, 500).slideUp(500, function () {
+            $("#SuccessMessage").alert('close');
+        });
+    });
+</script>
+
+
+<div class="container text-left">
+    @if (ViewBag.SuccessMessage != null )
+    {
+        <div class="row alert alert-success fade in" id="SuccessMessage">
+        <h5> @ViewBag.SuccessMessage</h5>
+        </div>
+    }
+    <h3 class="text-center">Preferred Brands</h3>
+    <div class="row">
+        @foreach (var item in Model)
+            {
+                if(@item.IsPreferred)
+                {
+                    <div class="col-md-4">
+                        @Html.Label(@item.BrandName) <br />
+                        <a href='@Url.Action("ShowBrandDetails", "Brand", new { BrandId = @item.BrandId})'>
+                            <img src="@Url.Content(@item.BrandImgUrl)" alt="Image" width="200px" height="200px" />
+                        </a>
+                        <br />
+                        @Html.Label(@item.BrandDescription)
+                    </div>
+                }
+        }
+    </div>
+
+    <h3 class="text-center">All Brands</h3>
+    <div class="row">
+
+        @foreach (var item in Model)
+            {
+            <div class="col-md-4">
+                @Html.Label(@item.BrandName) <br />
+                <a href='@Url.Action("ShowBrandDetails", "Brand", new { BrandId = @item.BrandId})'>
+                    <img src="@Url.Content(@item.BrandImgUrl)" alt="Image" width="200px" height="200px" />
+                </a>
+                <br />
+                @Html.Label(@item.BrandDescription)
+            </div>
+        }
+    </div>
+</div>

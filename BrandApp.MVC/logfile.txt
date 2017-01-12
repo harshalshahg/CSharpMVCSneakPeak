@@ -1,0 +1,4 @@
+2017-01-11 16:45:22,180 [12] DEBUG BrandApp.MVC.Controllers.AccountController [(null)] - Inside AccountController.Register.Submit
+2017-01-11 16:45:43,078 [10] DEBUG BrandApp.MVC.Controllers.AccountController [(null)] - Inside AccountController.Login
+2017-01-11 16:45:50,226 [11] DEBUG BrandApp.MVC.Controllers.AccountController [(null)] - Inside AccountController.Login
+2017-01-12 13:44:32,350 [15] DEBUG BrandApp.MVC.Controllers.AccountController [(null)] - Inside AccountController.Register.Submit

@@ -1,0 +1,21 @@
+﻿@model List<BrandApp.MVC.Models.LandingPageViewModel>
+@{
+    Layout = "~/Views/_MenuHeader.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container text-left">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                @Html.Label(@item.BrandName) <br />
+                <a href='@Url.Action("ShowBrandDetails", "Brand", new { BrandId = @item.BrandId})'>
+                    <img src="@Url.Content(@item.BrandImgUrl)" alt="Image" width="200px" height="200px" />
+                </a>
+                <br />
+                @Html.Label(@item.BrandDescription)
+            </div>
+        }
+    </div>
+</div>

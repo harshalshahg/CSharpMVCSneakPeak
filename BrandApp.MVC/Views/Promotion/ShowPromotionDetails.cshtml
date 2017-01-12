@@ -1,0 +1,94 @@
+﻿@model BrandApp.MVC.Models.PromotionPageViewModel
+
+@{
+    ViewBag.Title = "Show Promotion Details";
+    Layout = "~/Views/_MenuHeader.cshtml";
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("input").click(function () {
+            if ($("#isAuth").val() == "True") {
+                $.data('target', '#PromoModal')
+                $('#PromoModal').modal('show');
+            }
+            else {
+                $.data('target', '#LogInModal')
+                $('#LogInModal').modal('show');
+            }
+        });
+});
+</script>
+
+<body oncontextmenu="return false">
+    <!--Disabled right click => oncontextmenu="return false"-->
+    <div class="container text-left">
+        <h2 class="">Promotion Details</h2>
+        <div class="row">
+            <div class="col-lg-7">
+                @Html.Label("Name : ") @Model.PromotionName
+                <br />
+                @Html.Label("Description : ") @Model.PromotionDescription
+                <br />
+
+                @{ 
+                     bool isAuthenticated = Request.IsAuthenticated;
+                }
+                @Html.Hidden("isAuth", isAuthenticated)
+                @Html.Hidden("PromoCode", @Model.PromoCode)
+
+                <input type="Button" name="Hello" value="See Promo Code" class="btn btn-primary btn-sm" data-toggle="modal" />
+
+            </div>
+        </div>
+    </div>
+
+    <div id="PromoModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">PROMO CODE</h4>
+                </div>
+                <div class="modal-body">
+                    <p>@Html.LabelForModel(Model.PromoCode)</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div id="LogInModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">LogIn</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Ha Ha! You are not loggedin</h3>
+                    <p>
+                        @Html.ActionLink("Register", "Register", "Account") if you don't have a local account.
+                    </p>
+                    <p>
+                        @Html.ActionLink("Login", "Login", "Account") to see the Promotion Code.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
