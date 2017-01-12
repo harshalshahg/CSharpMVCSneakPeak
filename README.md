@@ -9,8 +9,10 @@ BrandApp is a basic application build to explore following using MVVC architectu
 
 # How do I set up?
 ## Software Requirement
- - Git Bash: https://git-scm.com/
- - Visual Studio
+ - [Git Bash] (https://git-scm.com/)
+ - [Visual Studio] (https://www.visualstudio.com/downloads/)
+ - [Microsoft SQL Server 2012] (https://www.microsoft.com/en-us/download/details.aspx?id=29062)
+ - [SQL Server Management Studio] (https://msdn.microsoft.com/en-us/library/mt238290.aspx)
  
 ## Environment Setup
  - Clone the repository using  `git clone https://github.com/harshalshahg/CSharpMVCSneakPeak.git` command in Git Bash
@@ -24,7 +26,7 @@ BrandApp is a basic application build to explore following using MVVC architectu
 </connectionStrings>
 ```
  - Clean and build the application.
- - Migrations are already executed on this project, hence you will see `*.cs` file at "\BrandApp.Services\Migrations" location. ([here] (https://meelivyas.blogspot.com/p/part1.html) are the steps to create migrations from scratch)
+ - Migrations are already executed on this project, hence you will see `*.cs` files at "\BrandApp.Services\Migrations" location. ([here] (https://meelivyas.blogspot.com/p/part1.html) are the steps to create migrations from scratch)
  - Run `Update-Database –Verbose` command from 'Package Manager Console' to create the database and tables.
  
  
